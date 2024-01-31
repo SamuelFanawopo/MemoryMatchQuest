@@ -63,4 +63,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Hosting
 
-This game is hosted at [hosting link].
+This game is hosted at https://memorymatchquest.netlify.app/
