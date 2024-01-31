@@ -83,16 +83,19 @@ const GameContainer = () => {
 
   return (
     <>
-      <div className="container mx-auto p-4">
+      <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-2">
+        <h1 className="text-3xl text-white font-bold my-4">
+          Memory Match Quest
+        </h1>
         <GameBoard cards={cards} onCardClick={handleCardClick} />
-        <div className="text-center mt-4">
+        <div className="mt-4 text-center">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-indigo-600 text-white px-5 py-2 rounded-lg text-md font-medium mr-3"
             onClick={initializeGame}
           >
             Reset Game
           </button>
-          <p className="text-lg mt-2">Moves: {moves}</p>
+          <span className="text-white text-md">Moves: {moves}</span>
         </div>
       </div>
     </>
