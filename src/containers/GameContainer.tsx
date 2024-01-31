@@ -101,7 +101,7 @@ const GameContainer = () => {
 
           <div className="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
             <button
-              className="bg-indigo-600 text-white px-4 py-2 rounded text-md font-medium mb-3 whitespace-nowrap"
+              className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-md font-medium mb-3 whitespace-nowrap"
               onClick={initializeGame}
             >
               Reset Game
