@@ -1,5 +1,11 @@
+import GameContainer from "./containers/GameContainer";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <GameContainer />
+    </>
+  );
 }
 
 export default App;
