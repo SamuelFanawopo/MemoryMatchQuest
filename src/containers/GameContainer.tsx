@@ -13,6 +13,7 @@ const GameContainer = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   // Function to initialize or reset the game
   const initializeGame = () => {
@@ -29,6 +30,12 @@ const GameContainer = () => {
     setCards(shuffledCards);
     setFlippedIndices([]);
     setMoves(0);
+    setIsCompleted(false);
+  };
+
+  const checkForCompletion = () => {
+    const allMatched = cards.every((card) => card.isMatched);
+    setIsCompleted(allMatched);
   };
 
   // Shuffle function
@@ -73,6 +80,7 @@ const GameContainer = () => {
       setCards(newCards);
       setFlippedIndices([]);
       setMoves((moves) => moves + 1);
+      checkForCompletion();
     }, 1000);
   };
 
@@ -83,21 +91,39 @@ const GameContainer = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-2">
-        <h1 className="text-3xl text-white font-bold my-4">
+      <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center p-4">
+        <h1 className="text-3xl text-white font-bold mb-4">
           Memory Match Quest
         </h1>
-        <GameBoard cards={cards} onCardClick={handleCardClick} />
-        <div className="mt-4 text-center">
-          <button
-            className="bg-indigo-600 text-white px-5 py-2 rounded-lg text-md font-medium mr-3"
-            onClick={initializeGame}
-          >
-            Reset Game
-          </button>
-          <span className="text-white text-md">Moves: {moves}</span>
+
+        <div className="flex justify-center items-start relative">
+          <GameBoard cards={cards} onCardClick={handleCardClick} />
+
+          <div className="absolute left-full ml-4 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
+            <button
+              className="bg-indigo-600 text-white px-4 py-2 rounded text-md font-medium mb-3 whitespace-nowrap"
+              onClick={initializeGame}
+            >
+              Reset Game
+            </button>
+            <span className="text-white text-md">Moves: {moves}</span>
+          </div>
         </div>
       </div>
+      {isCompleted && (
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-4 rounded-lg">
+            <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
+            <p>You've completed the game in {moves} moves!</p>
+            <button
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={initializeGame}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

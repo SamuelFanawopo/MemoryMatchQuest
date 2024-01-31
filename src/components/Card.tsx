@@ -7,7 +7,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ letter, isFlipped, onClick }) => {
   return (
     <div
-      className={`w-32 h-32 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center cursor-pointer
+      className={`w-28 h-28 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center cursor-pointer
                   transition duration-500 ease-in-out transform ${
                     isFlipped ? "rotate-y-180 bg-indigo-600" : ""
                   }`}
