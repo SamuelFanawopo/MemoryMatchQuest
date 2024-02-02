@@ -8,7 +8,7 @@ const Card: React.FC<CardProps> = ({ letter, isFlipped, onClick }) => {
   return (
     <div
       className={`w-28 h-28 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center cursor-pointer
-                  transition duration-500 ease-in-out transform ${
+                  transition duration-500 ease-in-out transform select-none ${
                     isFlipped ? "rotate-y-180 bg-indigo-600" : ""
                   }`}
       onClick={onClick}
